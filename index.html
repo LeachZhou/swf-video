@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #file {
+            background: #c2c2c2;
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center">
+    <br>
+    <br>
+    <br>
+    <h1>SWF网页播放器</h1>
+
+    <input type="file" id="file" onchange="onInputFileChange()">
+    <br>
+    <br>
+    <br>
+
+    <object
+            classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+            codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,16,0">
+        <param name="movie" value="三维练习题03.swf">
+        <param name="quality" value="high">
+        <param name="play" value="true">
+        <param name="LOOP" value="false">
+        <embed id="video_id" src="" width="1000" height="700" play="true" loop="false" quality="high"
+               pluginspage="http://www.macromedia.com/go/getflashplayer"
+               type="application/x-shockwave-flash">
+        </embed>
+    </object>
+
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.js"></script>
+<script>
+    function onInputFileChange() {
+        var file = document.getElementById('file').files[0];
+        var url = URL.createObjectURL(file);
+        console.log(url);
+        document.getElementById("video_id").src = url;
+    }
+</script>
+</html>
